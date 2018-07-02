@@ -7,6 +7,7 @@ router.get('/create', companiesController.create);
 router.post('/docreate',companiesController.doCreate);
 router.get('/edit/:id', companiesController.edit);
 router.post('/:id/doedit', companiesController.doEdit);
+router.post('/:id/delete', companiesController.delete);
 router.get('/', companiesController.list);
 router.get('/:id', companiesController.get);
 
