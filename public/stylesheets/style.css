@@ -6,7 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+.card .style-card{
+  display: flex;
+  justify-content: center;
+  padding: 20px; 
+  width: 50%;
+}
 
-.card img {
-  width: 500px;
+.style-card .row img{
+  height: 300px;
 }
