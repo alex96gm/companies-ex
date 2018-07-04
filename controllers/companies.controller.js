@@ -15,7 +15,7 @@ module.exports.list = (req, res, next) => {
 
 module.exports.get = (req, res, next) => {
     const id = req.params.id;
-
+    debugger;
     Company.findById(id)
         .then(company => {
             res.render('companies/detail', {
@@ -39,9 +39,9 @@ module.exports.doCreate = (req, res, next) => {
         .then(() => res.redirect('/'))
         .catch(err => {
             if (err instanceof mongoose.Error.ValidationError) {
-                res.render('company/create', {
+                res.render('companies/create', {
                     company: company,
-                    errors: error.errors
+                    errors: err.errors
                 });
             } else {
                 next(err);
@@ -77,8 +77,8 @@ module.exports.doEdit = (req, res, next) => {
                     .catch(err => {
                         if(err instanceof mongoose.Error.ValidationError) {
                             res.render('companies/create', {
-                                companies: companies, 
-                                error: error.errors
+                                companies:company, 
+                                error: err.errors
                             });
                         } else {
                             next(error);
