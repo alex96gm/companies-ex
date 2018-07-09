@@ -5,11 +5,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const companyRouter = require('./routes/companies');
+const commentRouter = require('./routes/comments');
+const usersRouter = require('./routes/users.routes');
+const sessionsRouter = require('./routes/session.routes');
+
 
 const app = express();
 
 require('./configs/db.config.js');
 require('./configs/hbs.config.js');
+require('./configs/session.config')(app);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,6 +27,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/companies', companyRouter);
+app.use('/comments',commentRouter);
+app.use('/users', usersRouter);
+app.use('/sessions', sessionsRouter);
 app.use('/', (req, res) => res.redirect('/companies'));
 
 // catch 404 and forward to error handler

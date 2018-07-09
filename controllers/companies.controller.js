@@ -15,7 +15,6 @@ module.exports.list = (req, res, next) => {
 
 module.exports.get = (req, res, next) => {
     const id = req.params.id;
-    debugger;
     Company.findById(id)
         .then(company => {
             res.render('companies/detail', {
